@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if category %}
+<!-- whole load of things removed here may need them for title and that -->
+<div>
+    <div>
+        <p><a href="{% url 'shop:all_products' %}">Our Products</a> | {{category.name}}</p>
+    </div>
+</div>
+{% endif %}
+<div>
+    {% if category %}
+    <img src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.description}}</p>
+</div>
+{% else %}
+<img src="{% static '' %}" alt="add site logo here">
+</div>
+<br>
+<div>
+    <h1>Our Products</h1>
+    <p>yapp about our site here in category html</p>
+</div>
+{% endif %}
+<div>
+    <div>
+        {% for product in prods %}
+        <div>
+            <div>
+                <a href="{{product.get_absolute_url}}"><img src="{{product.image.url}}" alt="{{product.name}}"></a>
+                <div>
+                    <h4>{{product.name}}</h4>
+                    <p>€{{product.price}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3>Hi {{ user.username }}</h3>
+    <div>
+        <p>Username: {{ user.username }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Phone Number: {{ user.phone }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Address: {{ user.address }}</p>
+
+        <a href="{% url 'password_change' %}">Change password</a>
+    </div>
+</div>
+{% if user.is_loyal %}
+    <h3>You are a loyal customer</h3>
+    <p>
+        Enjoy exlcusive offers and keep up to date on our sales or new products
+    </p>
+{% else %}
+<div>
+    <h2>Sign Up For Loyalty Status</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+
+            <p>
+                Sign up to be a Loyal Customer, receive weekly newsletter using the email you signed up with
+                and get exclusive offers!
+            </p>
+            <p>
+                The best part is it's Free and takes no time at all. Get your loyal benefits today!
+            </p>
+
+            <br>
+            <p><b>Sign Up Using :</b> {{ user.email }}</p>
+            
+            <button type="submit">Yes</button>
+        </form>
+
+        {% if success_message %}
+            <p>{{ success_message }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

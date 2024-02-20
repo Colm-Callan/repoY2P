@@ -1,0 +1,14 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+
+    <a href="{% url 'home' %}"><h1>Furniture Store</h1></a>
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+    {% block content %}
+    {% endblock content %}
+    {% include 'footer.html' %}
+</body>
+
