@@ -1,32 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% if category %}
-<!-- whole load of things removed here may need them for title and that -->
-<div>
-    <div>
-        <p><a href="{% url 'shop:all_products' %}">Our Products</a> | {{category.name}}</p>
-    </div>
-</div>
-{% endif %}
-<div>
-    {% if category %}
-    <img src="{{category.image.url}}" alt="{{category.name}}">
-</div>
-<br>
-<div>
-    <h1>{{category.name}}</h1>
-    <p>{{category.description}}</p>
-</div>
-{% else %}
+
 <img src="{% static '' %}" alt="add site logo here">
 </div>
 <br>
 <div>
     <h1>Our Products</h1>
-    <p>yapp about our site here in category html</p>
+    <p></p>
 </div>
-{% endif %}
+
+<div>
+    <hr>
+    <h3>Rooms</h3>
+    <hr>
+    <a href="{% url 'shop:bedroom' %}">Bedroom</a>
+    <a href="{% url 'shop:living_room' %}">Living Room</a>
+    <a href="{% url 'shop:kitchen' %}">Kitchen</a>
+    <a href="{% url 'shop:bathroom' %}">Bathroom</a>
+    <a href="{% url 'shop:garden' %}">Garden</a>
+
+    <hr>
+    <br>
+</div>
+
+
+
+<div>
+    {% for cat in links %}
+        <a href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+        <!-- <br>
+        <br> -->
+    {% endfor %}
+    <hr>
+    <br>
+</div>
+
+
+
 <div>
     <div>
         {% for product in prods %}

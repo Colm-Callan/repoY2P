@@ -10,7 +10,7 @@
     <h3>Hi {{user.username }}</h3>
     <a href="{% url 'user_profile' request.user.pk %}">User profile</a>
     |
-    <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit">Log out</button></form>
+    <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button id="logoutButton" type="submit">Log out</button></form>
 
 
 

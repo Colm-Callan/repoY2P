@@ -8,7 +8,7 @@ admin.site.register(Category, CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'description', 'category', 'stock',
-    'available', 'created', 'updated']
+    'available', 'loyal_product']
     list_editable = ['price', 'stock', 'available']
     list_per_page = 20
     

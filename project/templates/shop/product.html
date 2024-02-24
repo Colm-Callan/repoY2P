@@ -9,8 +9,8 @@ maybe take this out -->
 {% block content %}
     <div>
         <div>
-            <p><a href="{% url 'shop:all_products' %}">Home</a> | <a href="{{
-            product.category.get_url }}">{{product.category}}</a> |
+            <p><a href="{% url 'shop:all_products' %}">Home</a> |
+            <a href="{{product.category.get_url }}">{{product.category}}</a> |
             {{product.name}}</p>
         </div>
     <div>

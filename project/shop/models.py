@@ -10,6 +10,16 @@ class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     description = models.TextField(blank = True)
     image = models.ImageField(upload_to = 'category', blank=True)
+    
+    ROOM_CHOICES = [
+        ('bedroom', 'Bedroom'),
+        ('kitchen', 'Kitchen'),
+        ('living_room', 'Living Room'),
+        ('bathroom', 'Bathroom'),
+        ('garden', 'Garden'),
+    ]
+    
+    room = models.CharField(max_length=200, choices=ROOM_CHOICES, default=None)
 
     class Meta:
         ordering = ('name',)
@@ -34,9 +44,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to = 'product', blank=True)
     stock = models.IntegerField()
     available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True, blank = True, null= True
-)
-    updated = models.DateTimeField(auto_now=True, blank = True, null= True)
+    loyal_product = models.BooleanField(default=False)
     class Meta:
         ordering = ('name',)
         verbose_name = 'product'
